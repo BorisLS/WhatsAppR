@@ -1,10 +1,17 @@
+#' Returns a Dataframe that only contains posts with type 'media' oder 'message'
+#'
+#' @param chat Chat history that was imported with function wapp_import
+#' @param type String: 'media' for returning only media; 'message' for returning only pure messages without media
+#' @return Dataframe only with chats from the type 'media' or 'message'
+#' @examples
+#' friends <- wapp_import("Data/WhatsApp Chat mit Freunde Uni.txt", language = "de", techuser = FALSE)
 wapp_divide <- function(chat, type){
   if(type == "media"){
     data <- chat %>%
-      filter(type == "media")
+            filter(type == "media")
   }else if(type == "message"){
     data <- chat %>%
-      filter(type == "message")
+            filter(type == "message")
   }else{
     data <- chat
   }
