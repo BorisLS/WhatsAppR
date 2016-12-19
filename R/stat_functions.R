@@ -1,30 +1,52 @@
-wapp_stat_author <- function(chat, type, n){
-  data <- wapp_divide(chat,type) %>%
-    group_by(author) %>%
-    summarise(posts = n()) %>%
-    mutate(share.posts = round(posts / sum(posts), 4)) %>%
-    arrange(desc(posts))
+#' Aggregegates author
+#'
+#' @param chat Chat history that was imported with function wapp_import
+#' @return Grouped Dataframe with Informations which Author writes how much posts
+#' @export
+#' @import dplyr
+wapp_stat_author <- function(chat){
+  data <- chat %>%
+          group_by(author) %>%
+          summarise(posts = n()) %>%
+          mutate(share.posts = round(posts / sum(posts), 4)) %>%
+          arrange(desc(posts))
   return(data)
 }
 
-wapp_stat_date <- function(chat, type, n){
-  data <- wapp_divide(chat,type) %>%
-    group_by(day) %>%
-    summarise(posts = n()) %>%
-    mutate(share.posts = round(posts / sum(posts), 4)) %>%
-    arrange(desc(posts)) %>%
-    top_n(n)
+#' Aggregegates Date
+#'
+#' @param chat Chat history that was imported with function wapp_import
+#' @param type String: 'media' for returning only media; 'message' for returning only pure messages without media
+#' @return Grouped Dataframe with Informations about the Top - n Dates with Postings
+#' @export
+#' @import dplyr
+wapp_stat_date <- function(chat, n){
+  data <- chat %>%
+          group_by(day) %>%
+          summarise(posts = n()) %>%
+          mutate(share.posts = round(posts / sum(posts), 4)) %>%
+          arrange(desc(posts)) %>%
+          top_n(n, posts)
   return(data)
 }
 
-wapp_stat_time <- function(chat, type, intervall){
 
-  data <- wapp_prep_time(chat, type, intervall)
 
-  data <- wapp_divide(data,type) %>%
-    group_by(time.intervall) %>%
-    summarise(posts = n()) %>%
-    mutate(share.posts = round(posts / sum(posts), 4)) %>%
-    arrange(desc(posts))
+#' Aggregegates Time intervall
+#'
+#' @param chat Chat history that was imported with function wapp_import
+#' @param intervall String: 'media' for returning only media; 'message' for returning only pure messages without media
+#' @return Grouped Dataframe with Informations in which time intervall the most posts occur
+#' @export
+#' @import dplyr
+wapp_stat_time <- function(chat, intervall){
+
+  data <- wapp_prep_time(chat, intervall)
+
+  data <- data %>%
+          group_by(time.intervall) %>%
+          summarise(posts = n()) %>%
+          mutate(share.posts = round(posts / sum(posts), 4)) %>%
+          arrange(desc(posts))
   return(data)
 }

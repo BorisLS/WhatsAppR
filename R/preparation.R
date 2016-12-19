@@ -20,6 +20,16 @@ wapp_divide <- function(chat, type){
   return(data)
 }
 
+
+#' Transformation of Time Values: Adds Column time.intervall
+#'
+#' @param chat Chat history that was imported with function wapp_import
+#' @param intervall hour or quartar
+#' @return Adds
+#' @examples
+#' test
+#' @import dplyr
+#' @export
 wapp_prep_time <- function(chat, intervall){
 
   if(intervall == "hour"){
@@ -30,7 +40,7 @@ wapp_prep_time <- function(chat, intervall){
   l.i.t <- length(inter.time)
 
   inter.label <- paste0(inter.time[1:(l.i.t-1)], "-", inter.time[2:(l.i.t)])
-  time.hour <- as.integer(str_sub(chat$time, 1, 2))
+  time.hour <- as.integer(stringr::str_sub(chat$time, 1, 2))
 
   chat$time.intervall <- cut(time.hour, inter.time,
                              labels=inter.label, right=FALSE)
