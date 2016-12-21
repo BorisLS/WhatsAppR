@@ -7,7 +7,7 @@
 #' friends <- wapp_import("Data/WhatsApp Chat mit Freunde Uni.txt", language = "de", techuser = FALSE)
 #' @import dplyr
 #' @export
-wapp_divide <- function(chat, type){
+wapp_filter <- function(chat, type){
   if(type == "media"){
     data <- chat %>%
             filter(type == "media")
