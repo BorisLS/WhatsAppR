@@ -2,20 +2,20 @@
 % Please edit documentation in R/preparation.R
 \name{wapp_prep_time}
 \alias{wapp_prep_time}
-\title{Transformation of Time Values: Adds Column time.intervall}
+\title{Transformation of Time Values: Adds Column moment.intervall}
 \usage{
-wapp_prep_time(chat, intervall)
+wapp_prep_time(moment, intervall)
 }
 \arguments{
-\item{chat}{Chat history that was imported with function wapp_import}
-
 \item{intervall}{hour or quartar}
+
+\item{chat}{Chat history that was imported with function wapp_import}
 }
 \value{
 Adds
 }
 \description{
-Transformation of Time Values: Adds Column time.intervall
+Transformation of Time Values: Adds Column moment.intervall
 }
 \examples{
 test

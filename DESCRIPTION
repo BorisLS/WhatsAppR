@@ -16,7 +16,8 @@ Imports:
         stringr,
         tidyr,
         dplyr,
-        tidytext
+        tidytext,
+        lubridate
 Suggests:
         ggplot2
 

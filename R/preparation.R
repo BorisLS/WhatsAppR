@@ -21,7 +21,7 @@ wapp_filter <- function(chat, type){
 }
 
 
-#' Transformation of Time Values: Adds Column time.intervall
+#' Transformation of Time Values: Adds Column moment.intervall
 #'
 #' @param chat Chat history that was imported with function wapp_import
 #' @param intervall hour or quartar
@@ -29,20 +29,54 @@ wapp_filter <- function(chat, type){
 #' @examples
 #' test
 #' @import dplyr
+#' @import lubridate
 #' @export
-wapp_prep_time <- function(chat, intervall){
+wapp_prep_time <- function(moment, intervall){
 
   if(intervall == "hour"){
-    inter.time <- seq(0,24,1)
+    moment.intervall <- lubridate::hour(moment)
   } else if(intervall == "quarter"){
-    inter.time <- seq(0,24,3)
+    moment.intervall <- cut(lubridate::hour(moment),
+                            seq(0,24,3),
+                            paste0("[", seq(0,24,3)[1:8], "-", seq(0,24,3)[2:9], ")"),
+                            right=FALSE)
+  } else if(intervall == "day"){
+    moment.intervall <- lubridate::day(moment)
+  } else if(intervall == "month"){
+    moment.intervall <- lubridate::month(moment, label = TRUE, abbr = TRUE)
+  } else if(intervall == "year"){
+    moment.intervall <- lubridate::year(moment)
+  } else if(intervall == "weekday"){
+    moment.intervall <- lubridate::wday(moment, label = TRUE, abbr = FALSE)
+  } else{
+    moment.intervall <- "unknown intervall"
   }
-  l.i.t <- length(inter.time)
 
-  inter.label <- paste0(inter.time[1:(l.i.t-1)], "-", inter.time[2:(l.i.t)])
-  time.hour <- as.integer(stringr::str_sub(chat$time, 1, 2))
-
-  chat$time.intervall <- cut(time.hour, inter.time,
-                             labels=inter.label, right=FALSE)
-  return(chat)
+  return(moment.intervall)
 }
+
+#' Replaces author names
+#'
+#' @param author column of author importet
+#' @param author.old old names
+#' @param author.new new names
+#' @return Adds
+#' @examples
+#' test
+#' @export
+wapp_prep_author <- function(author, author.old, author.new){
+
+  # import checks
+  # techuser
+  # length(unique(author)) < length(author.old)
+  # length(author.old) != length(author.new)
+  author.adjusted <- author
+
+  for(i in seq_len(length(author.old))){
+    author.adjusted <- ifelse(author.adjusted == author.old[i],
+                              author.new[i], author.adjusted)
+  }
+
+  return(author.adjusted)
+}
+

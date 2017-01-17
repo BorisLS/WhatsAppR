@@ -30,8 +30,6 @@ wapp_stat_date <- function(chat, n){
   return(data)
 }
 
-
-
 #' Aggregegates Time intervall
 #'
 #' @param chat Chat history that was imported with function wapp_import
@@ -41,12 +39,38 @@ wapp_stat_date <- function(chat, n){
 #' @import dplyr
 wapp_stat_time <- function(chat, intervall){
 
-  data <- wapp_prep_time(chat, intervall)
-
-  data <- data %>%
+  data <- chat %>%
+          mutate(time.intervall = wapp_prep_time(moment, intervall)) %>%
           group_by(time.intervall) %>%
           summarise(posts = n()) %>%
           mutate(share.posts = round(posts / sum(posts), 4)) %>%
           arrange(desc(posts))
   return(data)
 }
+
+
+#' Who posts the first post on an day
+#'
+#' @param chat Chat history that was imported with function wapp_import
+#' @return Grouped Dataframe with Informations who posts the first post
+#' @export
+#' @import dplyr
+wapp_stat_firstpost <- function(chat){
+
+  data <- chat %>%
+          select(day, author) %>%
+          group_by(day) %>%
+          summarise(first.post = head(author,1)) %>%
+          ungroup()
+
+  nu.days <- nu_days <- dim(data)[1]
+
+  data <- data %>%
+          group_by(first.post) %>%
+          summarise(count = n()) %>%
+          mutate(share = round(count/nu_days, 4)) %>%
+          arrange(desc(count))
+
+  return(data)
+}
+
