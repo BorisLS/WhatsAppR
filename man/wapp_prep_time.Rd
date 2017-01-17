@@ -7,17 +7,14 @@
 wapp_prep_time(moment, intervall)
 }
 \arguments{
-\item{intervall}{hour or quartar}
+\item{moment}{Chat history that was imported with function wapp_import}
 
-\item{chat}{Chat history that was imported with function wapp_import}
+\item{intervall}{hour or quartar}
 }
 \value{
 Adds
 }
 \description{
 Transformation of Time Values: Adds Column moment.intervall
-}
-\examples{
-test
 }
 

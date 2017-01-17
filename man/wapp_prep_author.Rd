@@ -19,7 +19,4 @@ Adds
 \description{
 Replaces author names
 }
-\examples{
-test
-}
 

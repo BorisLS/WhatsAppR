@@ -16,7 +16,7 @@ wapp_stat_author <- function(chat){
 #' Aggregegates Date
 #'
 #' @param chat Chat history that was imported with function wapp_import
-#' @param type String: 'media' for returning only media; 'message' for returning only pure messages without media
+#' @param n Top days
 #' @return Grouped Dataframe with Informations about the Top - n Dates with Postings
 #' @export
 #' @import dplyr

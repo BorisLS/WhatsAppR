@@ -6,9 +6,6 @@
 #' @return Dataframe with the WhatsApp chat history
 #' @export
 #' @import dplyr
-#' @import readr
-#' @examples
-#' friends <- wapp_import("Data/WhatsApp Chat mit Freunde Uni.txt", language = "de", techuser = FALSE)
 wapp_import <- function(history, language = "de", techuser = FALSE){
   #' @import dplyr
   # Import data ---------------------------
@@ -61,10 +58,10 @@ wapp_import <- function(history, language = "de", techuser = FALSE){
 
     } else{
       # No complete Information about User
-      chat.df[i, "moment"]      <- chat.df[i-1, "moment"]
-      chat.df[i, "day"]       <- chat.df[i-1, "day"]
-      chat.df[i, "author"]    <- chat.df[i-1, "author"]
-      chat.df[i, "content"]      <- stringr::str_trim(raw.data, side = "left")
+      chat.df[i, "moment"]  <- chat.df[i-1, "moment"]
+      chat.df[i, "day"]     <- chat.df[i-1, "day"]
+      chat.df[i, "author"]  <- chat.df[i-1, "author"]
+      chat.df[i, "content"] <- stringr::str_trim(raw.data, side = "left")
     }
   }
 

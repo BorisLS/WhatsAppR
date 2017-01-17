@@ -8,6 +8,10 @@ wapp_stat_emoticon(chat, author = "John Doe", n = 3)
 }
 \arguments{
 \item{chat}{Chat history that was imported with function wapp_import}
+
+\item{author}{which author}
+
+\item{n}{top_n}
 }
 \value{
 Grouped Dataframe with Informations which Author writes how much posts

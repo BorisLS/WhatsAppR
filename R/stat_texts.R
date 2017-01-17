@@ -1,17 +1,18 @@
 #' Emoticons per Author
 #'
 #' @param chat Chat history that was imported with function wapp_import
+#' @param author which author
+#' @param n top_n
 #' @return Grouped Dataframe with Informations which Author writes how much posts
 #' @export
 #' @import dplyr
-#' @import tidytext
 wapp_stat_emoticon <- function(chat, author = "John Doe", n=3){
   a <- author
 
   # Unnest Tokens
   data <- chat %>%
           filter(type=="message") %>%
-          unnest_tokens(char, content, token = "characters", drop = TRUE) %>%
+          tidytext::unnest_tokens(char, content, token = "characters", drop = TRUE) %>%
           select(-rawdata)
 
   # Restrict author (open issue: to it the tidy way)
@@ -43,16 +44,16 @@ wapp_stat_emoticon <- function(chat, author = "John Doe", n=3){
 #' Word Occurence
 #'
 #' @param chat Chat history that was imported with function wapp_import
+#' @param word which word occurence
 #' @return Grouped Dataframe with Informations which Author writes how much posts
 #' @export
 #' @import dplyr
-#' @import tidytext
 wapp_stat_word <- function(chat, word){
 
   # Unnest Tokens
   data <- chat %>%
           filter(type=="message") %>%
-          unnest_tokens(words, content, token = "words", drop = TRUE) %>%
+          tidytext::unnest_tokens(words, content, token = "words", drop = TRUE) %>%
           select(-rawdata)
 
   nu.words <- dim(data)[1]

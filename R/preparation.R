@@ -3,8 +3,6 @@
 #' @param chat Chat history that was imported with function wapp_import
 #' @param type String: 'media' for returning only media; 'message' for returning only pure messages without media
 #' @return Dataframe only with chats from the type 'media' or 'message'
-#' @examples
-#' friends <- wapp_import("Data/WhatsApp Chat mit Freunde Uni.txt", language = "de", techuser = FALSE)
 #' @import dplyr
 #' @export
 wapp_filter <- function(chat, type){
@@ -23,13 +21,10 @@ wapp_filter <- function(chat, type){
 
 #' Transformation of Time Values: Adds Column moment.intervall
 #'
-#' @param chat Chat history that was imported with function wapp_import
+#' @param moment Chat history that was imported with function wapp_import
 #' @param intervall hour or quartar
 #' @return Adds
-#' @examples
-#' test
 #' @import dplyr
-#' @import lubridate
 #' @export
 wapp_prep_time <- function(moment, intervall){
 
@@ -61,8 +56,6 @@ wapp_prep_time <- function(moment, intervall){
 #' @param author.old old names
 #' @param author.new new names
 #' @return Adds
-#' @examples
-#' test
 #' @export
 wapp_prep_author <- function(author, author.old, author.new){
 

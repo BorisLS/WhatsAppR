@@ -19,7 +19,4 @@ Dataframe with the WhatsApp chat history
 \description{
 Imports an exported WhatsApp chat history
 }
-\examples{
-friends <- wapp_import("Data/WhatsApp Chat mit Freunde Uni.txt", language = "de", techuser = FALSE)
-}
 

@@ -9,7 +9,7 @@ wapp_stat_date(chat, n)
 \arguments{
 \item{chat}{Chat history that was imported with function wapp_import}
 
-\item{type}{String: 'media' for returning only media; 'message' for returning only pure messages without media}
+\item{n}{Top days}
 }
 \value{
 Grouped Dataframe with Informations about the Top - n Dates with Postings

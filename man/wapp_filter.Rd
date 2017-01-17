@@ -17,7 +17,4 @@ Dataframe only with chats from the type 'media' or 'message'
 \description{
 Returns a Dataframe that only contains posts with type 'media' oder 'message'
 }
-\examples{
-friends <- wapp_import("Data/WhatsApp Chat mit Freunde Uni.txt", language = "de", techuser = FALSE)
-}
 

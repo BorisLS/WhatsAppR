@@ -12,12 +12,11 @@ License: MIT
 LazyData: TRUE
 RoxygenNote: 5.0.1
 Imports:
+        dplyr
+Suggests:
+        tidytext,
+        lubridate,
         readr,
         stringr,
         tidyr,
-        dplyr,
-        tidytext,
-        lubridate
-Suggests:
         ggplot2
-

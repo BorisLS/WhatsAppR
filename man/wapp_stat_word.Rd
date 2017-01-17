@@ -8,6 +8,8 @@ wapp_stat_word(chat, word)
 }
 \arguments{
 \item{chat}{Chat history that was imported with function wapp_import}
+
+\item{word}{which word occurence}
 }
 \value{
 Grouped Dataframe with Informations which Author writes how much posts
