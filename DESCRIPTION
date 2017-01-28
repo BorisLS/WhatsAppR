@@ -1,14 +1,15 @@
 Package: WhatsAppR
 Type: Package
-Title: Functions for analysing WhatsApp chat history
+Title: Analyzing WhatsApp Chats
 Version: 0.1.0
-Author: Boris Lütke Schelhowe
-Maintainer: Boris Lütke Schelhowe <boris.luetke.schelhowe@gmail.com>
-Description: Functions for analysing WhatsApp chat history. It provides
+Author: Boris Luetke Schelhowe
+Maintainer: Boris Luetke Schelhowe <boris.luetke.schelhowe@gmail.com>
+Description: Functions for analyzing WhatsApp chat history. It provides
     some functions for import an exported WhatsApp chat history in R and further
     analysis. Note: Currently only compatible with exported chats in German
     language!
-License: MIT
+Depends: R (>= 2.10)
+License: GPL-2
 LazyData: TRUE
 RoxygenNote: 5.0.1
 Imports:
@@ -19,4 +20,7 @@ Suggests:
         readr,
         stringr,
         tidyr,
-        ggplot2
+        ggplot2,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

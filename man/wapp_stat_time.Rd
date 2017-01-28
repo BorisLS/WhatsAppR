@@ -2,19 +2,19 @@
 % Please edit documentation in R/stat_functions.R
 \name{wapp_stat_time}
 \alias{wapp_stat_time}
-\title{Aggregegates Time intervall}
+\title{Group an imported chat history by time interval}
 \usage{
-wapp_stat_time(chat, intervall)
+wapp_stat_time(chat, interval)
 }
 \arguments{
-\item{chat}{Chat history that was imported with function wapp_import}
+\item{chat}{a WhatsApp chat history that was imported using \code{\link{wapp_import}}}
 
-\item{intervall}{String: 'media' for returning only media; 'message' for returning only pure messages without media}
+\item{interval}{interval a string with the possible expressions 'hour', 'quarter', 'day', 'month', 'year' and 'weekday'}
 }
 \value{
-Grouped Dataframe with Informations in which time intervall the most posts occur
+Grouped dataframe with informations on which 'n' days the many posts were posted towhat is proportion of total posts
 }
 \description{
-Aggregegates Time intervall
+Group an imported chat history by time interval
 }
 

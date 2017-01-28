@@ -1,13 +1,12 @@
-#' Emoticons per Author
+#' Group an imported chat history by emoticons an author has used
 #'
-#' @param chat Chat history that was imported with function wapp_import
-#' @param author which author
-#' @param n top_n
-#' @return Grouped Dataframe with Informations which Author writes how much posts
+#' @param chat a WhatsApp chat history that was imported using \code{\link{wapp_import}}
+#' @param author name of author in a WhatsApp chat history
+#' @param n number of top 'n' emoticons
+#' @return Grouped Dataframe with informations which top 'n' emoticons are used by the choosen 'author'
 #' @export
 #' @import dplyr
-wapp_stat_emoticon <- function(chat, author = "John Doe", n=3){
-  a <- author
+wapp_stat_emoticons <- function(chat, author, n=3){
 
   # Unnest Tokens
   data <- chat %>%
@@ -15,8 +14,9 @@ wapp_stat_emoticon <- function(chat, author = "John Doe", n=3){
           tidytext::unnest_tokens(char, content, token = "characters", drop = TRUE) %>%
           select(-rawdata)
 
-  # Restrict author (open issue: to it the tidy way)
-  data <- data[data$author == a, ]
+  # Restrict author (open issue: do it the tidy way)
+  a <- author
+  data <- data[data$author %in% a, ]
 
   # Restrict emoticons
   data <- data %>%
@@ -26,7 +26,7 @@ wapp_stat_emoticon <- function(chat, author = "John Doe", n=3){
   no.emoticons <- dim(data)[1]
 
   # Group Data
-  data <- data %>%
+  result <- data %>%
           group_by(char, description) %>%
           summarise(number = n()) %>%
           ungroup() %>%
@@ -34,18 +34,48 @@ wapp_stat_emoticon <- function(chat, author = "John Doe", n=3){
           arrange(desc(share)) %>%
           top_n(n, share)
 
-  result <- list(top_list = data,
-                 no_emoticons = no.emoticons)
+  return(result)
+}
+
+#' Count occurence of (unique) emoticons an author has used in an imported chat history
+#'
+#' @param chat a WhatsApp chat history that was imported using \code{\link{wapp_import}}
+#' @param author name of author in a WhatsApp chat history
+#' @param singular TRUE for only counting unique emoticons and FALSE for counting all posted emoticons
+#' @return Number of (unique) emoticons are used by the choosen 'author'
+#' @export
+#' @import dplyr
+wapp_count_emoticons <- function(chat, author, singular){
+
+  # Unnest Tokens
+  data <- chat %>%
+          filter(type=="message") %>%
+          tidytext::unnest_tokens(char, content, token = "characters", drop = TRUE) %>%
+          select(-rawdata)
+
+  # Restrict author (open issue: do it the tidy way)
+  a <- author
+  data <- data[data$author %in% a, ]
+
+  # Restrict emoticons
+  data <- data %>%
+          inner_join(emoticons, by = c("char" = "emoticon")) %>%
+          select(-unicode,-bytes.utf.8)
+
+  if(singular == FALSE){
+    result <- dim(data)[1]
+  }else{
+    result <- length(unique(data$char))
+  }
 
   return(result)
 }
 
-
-#' Word Occurence
+#' Group an imported chat history by a specific word an author has used
 #'
-#' @param chat Chat history that was imported with function wapp_import
-#' @param word which word occurence
-#' @return Grouped Dataframe with Informations which Author writes how much posts
+#' @param chat a WhatsApp chat history that was imported using \code{\link{wapp_import}}
+#' @param word a specific word in the imported chat history
+#' @return Grouped Dataframe with informations which authors has used the word how many times
 #' @export
 #' @import dplyr
 wapp_stat_word <- function(chat, word){
@@ -61,13 +91,10 @@ wapp_stat_word <- function(chat, word){
   # Restrict word (open issue: to it the tidy way)
   data <- data[data$words == word, ]
 
-  data <- data %>%
-          group_by(author) %>%
-          summarise(number = n()) %>%
-          arrange(desc(number))
-
-  result <- list(author_list = data,
-                 nu_word = nu.words)
+  result <- data %>%
+            group_by(author) %>%
+            summarise(number = n()) %>%
+            arrange(desc(number))
 
   return(result)
 }

@@ -1,7 +1,7 @@
-#' Aggregegates author
+#' Group an imported chat history by author
 #'
-#' @param chat Chat history that was imported with function wapp_import
-#' @return Grouped Dataframe with Informations which Author writes how much posts
+#' @param chat a WhatsApp chat history that was imported using \code{\link{wapp_import}}
+#' @return Grouped dataframe with informations which author writes how many posts and what is proportion of total posts
 #' @export
 #' @import dplyr
 wapp_stat_author <- function(chat){
@@ -13,11 +13,11 @@ wapp_stat_author <- function(chat){
   return(data)
 }
 
-#' Aggregegates Date
+#' Group an imported chat history by date
 #'
-#' @param chat Chat history that was imported with function wapp_import
-#' @param n Top days
-#' @return Grouped Dataframe with Informations about the Top - n Dates with Postings
+#' @param chat a WhatsApp chat history that was imported using \code{\link{wapp_import}}
+#' @param n number of days
+#' @return Grouped dataframe with informations in which time interval how many posts and what is proportion of total posts
 #' @export
 #' @import dplyr
 wapp_stat_date <- function(chat, n){
@@ -30,18 +30,18 @@ wapp_stat_date <- function(chat, n){
   return(data)
 }
 
-#' Aggregegates Time intervall
+#' Group an imported chat history by time interval
 #'
-#' @param chat Chat history that was imported with function wapp_import
-#' @param intervall String: 'media' for returning only media; 'message' for returning only pure messages without media
-#' @return Grouped Dataframe with Informations in which time intervall the most posts occur
+#' @param chat a WhatsApp chat history that was imported using \code{\link{wapp_import}}
+#' @param interval interval a string with the possible expressions 'hour', 'quarter', 'day', 'month', 'year' and 'weekday'
+#' @return Grouped dataframe with informations on which 'n' days the many posts were posted towhat is proportion of total posts
 #' @export
 #' @import dplyr
-wapp_stat_time <- function(chat, intervall){
+wapp_stat_time <- function(chat, interval){
 
   data <- chat %>%
-          mutate(time.intervall = wapp_prep_time(moment, intervall)) %>%
-          group_by(time.intervall) %>%
+          mutate(time.interval = wapp_prep_time(moment, interval)) %>%
+          group_by(time.interval) %>%
           summarise(posts = n()) %>%
           mutate(share.posts = round(posts / sum(posts), 4)) %>%
           arrange(desc(posts))
@@ -51,8 +51,8 @@ wapp_stat_time <- function(chat, intervall){
 
 #' Who posts the first post on an day
 #'
-#' @param chat Chat history that was imported with function wapp_import
-#' @return Grouped Dataframe with Informations who posts the first post
+#' @param chat a WhatsApp chat history that was imported using \code{\link{wapp_import}}
+#' @return Grouped dataframe with informations which author has posted how often the first entry of the day
 #' @export
 #' @import dplyr
 wapp_stat_firstpost <- function(chat){

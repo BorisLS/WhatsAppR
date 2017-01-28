@@ -7,14 +7,14 @@
 wapp_import(history, language = "de", techuser = FALSE)
 }
 \arguments{
-\item{history}{File path that contains the chat history.}
+\item{history}{a file path (txt-file) that contains the exported WhatsApp history}
 
-\item{language}{Only German Language is supported.}
+\item{language}{is necessary to identify the type of the message. Note: Currently only the German language ('de') is supported}
 
-\item{techuser}{Boolean: If WhatsApp TechUser-Posts should be part of the Dataframe}
+\item{techuser}{a boolean variable. If WhatsApp TechUser-Posts should be part of the dataframe or not}
 }
 \value{
-Dataframe with the WhatsApp chat history
+a dataframe with the imported and processed WhatsApp history
 }
 \description{
 Imports an exported WhatsApp chat history

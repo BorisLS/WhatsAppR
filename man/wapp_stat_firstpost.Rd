@@ -7,10 +7,10 @@
 wapp_stat_firstpost(chat)
 }
 \arguments{
-\item{chat}{Chat history that was imported with function wapp_import}
+\item{chat}{a WhatsApp chat history that was imported using \code{\link{wapp_import}}}
 }
 \value{
-Grouped Dataframe with Informations who posts the first post
+Grouped dataframe with informations which author has posted how often the first entry of the day
 }
 \description{
 Who posts the first post on an day

@@ -7,14 +7,14 @@
 wapp_prep_author(author, author.old, author.new)
 }
 \arguments{
-\item{author}{column of author importet}
+\item{author}{column with names of authors in a WhatsApp chat history that was imported using \code{\link{wapp_import}}}
 
-\item{author.old}{old names}
+\item{author.old}{a vector with the 'old' names of authors that should be replaced}
 
-\item{author.new}{new names}
+\item{author.new}{a vector with the 'new' names of authors that should be replaced. Positions in vector has to correspond to positions in 'author.old'}
 }
 \value{
-Adds
+a column with replaced names of authors
 }
 \description{
 Replaces author names

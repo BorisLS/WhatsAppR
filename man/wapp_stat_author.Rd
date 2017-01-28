@@ -2,17 +2,17 @@
 % Please edit documentation in R/stat_functions.R
 \name{wapp_stat_author}
 \alias{wapp_stat_author}
-\title{Aggregegates author}
+\title{Group an imported chat history by author}
 \usage{
 wapp_stat_author(chat)
 }
 \arguments{
-\item{chat}{Chat history that was imported with function wapp_import}
+\item{chat}{a WhatsApp chat history that was imported using \code{\link{wapp_import}}}
 }
 \value{
-Grouped Dataframe with Informations which Author writes how much posts
+Grouped dataframe with informations which author writes how many posts and what is proportion of total posts
 }
 \description{
-Aggregegates author
+Group an imported chat history by author
 }
 

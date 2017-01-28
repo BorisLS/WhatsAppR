@@ -2,19 +2,19 @@
 % Please edit documentation in R/stat_functions.R
 \name{wapp_stat_date}
 \alias{wapp_stat_date}
-\title{Aggregegates Date}
+\title{Group an imported chat history by date}
 \usage{
 wapp_stat_date(chat, n)
 }
 \arguments{
-\item{chat}{Chat history that was imported with function wapp_import}
+\item{chat}{a WhatsApp chat history that was imported using \code{\link{wapp_import}}}
 
-\item{n}{Top days}
+\item{n}{number of days}
 }
 \value{
-Grouped Dataframe with Informations about the Top - n Dates with Postings
+Grouped dataframe with informations in which time interval how many posts and what is proportion of total posts
 }
 \description{
-Aggregegates Date
+Group an imported chat history by date
 }
 

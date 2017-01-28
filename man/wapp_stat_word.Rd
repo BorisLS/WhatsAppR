@@ -2,19 +2,19 @@
 % Please edit documentation in R/stat_texts.R
 \name{wapp_stat_word}
 \alias{wapp_stat_word}
-\title{Word Occurence}
+\title{Group an imported chat history by a specific word an author has used}
 \usage{
 wapp_stat_word(chat, word)
 }
 \arguments{
-\item{chat}{Chat history that was imported with function wapp_import}
+\item{chat}{a WhatsApp chat history that was imported using \code{\link{wapp_import}}}
 
-\item{word}{which word occurence}
+\item{word}{a specific word in the imported chat history}
 }
 \value{
-Grouped Dataframe with Informations which Author writes how much posts
+Grouped Dataframe with informations which authors has used the word how many times
 }
 \description{
-Word Occurence
+Group an imported chat history by a specific word an author has used
 }
 

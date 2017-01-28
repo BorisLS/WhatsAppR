@@ -2,19 +2,19 @@
 % Please edit documentation in R/preparation.R
 \name{wapp_filter}
 \alias{wapp_filter}
-\title{Returns a Dataframe that only contains posts with type 'media' oder 'message'}
+\title{Return rows with matching conditions: if type is 'media' or 'message'}
 \usage{
 wapp_filter(chat, type)
 }
 \arguments{
-\item{chat}{Chat history that was imported with function wapp_import}
+\item{chat}{a WhatsApp chat history that was imported using \code{\link{wapp_import}}}
 
-\item{type}{String: 'media' for returning only media; 'message' for returning only pure messages without media}
+\item{type}{a string. 'message' for returning only pure messages without media. 'media' for returning only media;}
 }
 \value{
-Dataframe only with chats from the type 'media' or 'message'
+an object of the same class as chat
 }
 \description{
-Returns a Dataframe that only contains posts with type 'media' oder 'message'
+Return rows with matching conditions: if type is 'media' or 'message'
 }
 

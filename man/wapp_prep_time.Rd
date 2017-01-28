@@ -2,19 +2,19 @@
 % Please edit documentation in R/preparation.R
 \name{wapp_prep_time}
 \alias{wapp_prep_time}
-\title{Transformation of Time Values: Adds Column moment.intervall}
+\title{Conversion of time data in 'moment' column to time intervals}
 \usage{
-wapp_prep_time(moment, intervall)
+wapp_prep_time(moment, interval)
 }
 \arguments{
-\item{moment}{Chat history that was imported with function wapp_import}
+\item{moment}{column with time data in a WhatsApp chat history that was imported using \code{\link{wapp_import}}}
 
-\item{intervall}{hour or quartar}
+\item{interval}{a string with the possible expressions 'hour', 'quarter', 'day', 'month', 'year' and 'weekday'}
 }
 \value{
-Adds
+new column with transformed time intervals
 }
 \description{
-Transformation of Time Values: Adds Column moment.intervall
+Conversion of time data in 'moment' column to time intervals
 }
 
