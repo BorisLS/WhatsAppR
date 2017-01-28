@@ -7,7 +7,5 @@ The package is currently under development.
 
 **Note**: Only German language is supported! For supporting English language some chat histories from smartphones with 'english-settings' are requested for testing and development!
 
-Es findet sich eine 
-
 ## Vignettes
 Deutsch: Einführung in die Analyse von Chatverläufen mit [WhatsAppR](https://github.com/BorisLS/WhatsAppR/blob/master/vignettes/WhatsAppR_Einfuehrung_Deutsch.Rmd)
