@@ -7,5 +7,10 @@ The package is currently under development.
 
 **Note**: Only German language is supported! For supporting English language some chat histories from smartphones with 'english-settings' are requested for testing and development!
 
+## Shiny
+Die Grundfunktionalitäten des WhatsAppR-Packages sind in einer Shiny-App integriert. Diese erlaubt es, einen WhatsApp-Chatverlauf auch ohne die Installation von R zu analysieren. Der Link zu der Web-App lautet:  
+[WhatsAppR-Shiny-App](https://borisls.shinyapps.io/WhatsAppR/)
+
+
 ## Vignettes
 Deutsch: Einführung in die Analyse von Chatverläufen mit [WhatsAppR](https://borisls.github.io/whatsappr/WhatsAppR_Einfuehrung_Deutsch.html)
