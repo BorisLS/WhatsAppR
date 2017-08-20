@@ -13,4 +13,4 @@ Die Grundfunktionalitäten des WhatsAppR-Packages sind in einer Shiny-App integr
 
 
 ## Vignettes
-Deutsch: Einführung in die Analyse von Chatverläufen mit [WhatsAppR](https://borisls.github.io/whatsappr/WhatsAppR_Einfuehrung_Deutsch.html)
+Deutsch: Einführung in die Analyse von Chatverläufen mit [WhatsAppR](https://gist.github.com/BorisLS/ca3b4e390fa5b0cc2806938012c4f755)
